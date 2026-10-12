@@ -1,0 +1,761 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>18th Birthday Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --red: #e51b3e;
+    --dark-red: #650817;
+    --gold: #e8bd71;
+    --black: #100609;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--black);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+button, input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =================================
+   LUXURY RED & GOLD ANIMATED COVER
+================================= */
+
+.cover {
+    min-height: 100vh;
+    width: 100%;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(12, 0, 3, 0.72),
+            rgba(75, 0, 15, 0.42),
+            rgba(8, 0, 2, 0.78)
+        ),
+        url("red.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Soft, moving red and gold light */
+.cover::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at 25% 35%,
+            rgba(190, 0, 35, 0.38),
+            transparent 32%
+        ),
+        radial-gradient(
+            ellipse at 75% 60%,
+            rgba(255, 190, 65, 0.20),
+            transparent 25%
+        ),
+        radial-gradient(
+            ellipse at 50% 80%,
+            rgba(110, 0, 20, 0.35),
+            transparent 35%
+        );
+
+    filter: blur(25px);
+    animation: luxuryGlow 12s ease-in-out infinite alternate;
+}
+
+/* Elegant gold light streak */
+.cover::after {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: -60%;
+    width: 35%;
+    height: 180%;
+    z-index: -1;
+    pointer-events: none;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 215, 130, 0.12),
+        rgba(255, 240, 190, 0.30),
+        transparent
+    );
+
+    transform: rotate(25deg);
+    animation: goldLightSweep 9s ease-in-out infinite;
+}
+
+/* Moving background glow */
+@keyframes luxuryGlow {
+    0% {
+        transform: translate(-3%, -2%) scale(0.95);
+        opacity: 0.65;
+    }
+
+    100% {
+        transform: translate(3%, 2%) scale(1.08);
+        opacity: 1;
+    }
+}
+
+/* Gold light travels across the cover */
+@keyframes goldLightSweep {
+    0%, 15% {
+        left: -60%;
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    65% {
+        left: 125%;
+        opacity: 0.7;
+    }
+
+    75%, 100% {
+        left: 125%;
+        opacity: 0;
+    }
+}
+
+/* Keep the invitation content above the background */
+.cover > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Elegant gold heading glow */
+.cover h1,
+.cover h2 {
+    text-shadow:
+        0 0 8px rgba(255, 215, 120, 0.35),
+        0 0 25px rgba(200, 0, 35, 0.45);
+}
+
+/* Luxury invitation button */
+.cover button {
+    border: 1px solid #e6c16a;
+    background: linear-gradient(
+        135deg,
+        #8d001b,
+        #c51232,
+        #700015
+    );
+    color: #fff3ce;
+    padding: 14px 30px;
+    border-radius: 4px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(210, 0, 40, 0.35),
+        inset 0 0 10px rgba(255, 215, 130, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.cover button:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 0 25px rgba(255, 190, 65, 0.4),
+        0 0 40px rgba(210, 0, 40, 0.35);
+}
+
+/* Reduce movement for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .cover::before,
+    .cover::after {
+        animation: none;
+    }
+
+    .cover button {
+        transition: none;
+    }
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.crown {
+    font-size: 30px;
+    color: var(--gold);
+    margin-bottom: 4px;
+}
+
+.big-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(105px, 23vw, 185px);
+    font-weight: 500;
+    line-height: .85;
+    color: #ffccd1;
+    text-shadow: 0 0 20px #ff174455, 0 0 70px #ff174433;
+}
+
+.ordinal {
+    color: var(--gold);
+    font-size: 30px;
+    vertical-align: top;
+}
+
+.script-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(55px, 12vw, 90px);
+    color: #ff526b;
+    margin-top: 10px;
+    line-height: 1.2;
+}
+
+.cover-description {
+    color: #fff0f1;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.6;
+    margin: 14px auto 28px;
+    text-shadow: 0 2px 8px #000;
+}
+
+.envelope {
+    position: relative;
+    width: min(100%, 390px);
+    height: 190px;
+    margin: 0 auto;
+    background: linear-gradient(145deg, #b40d2b, #520615);
+    border: 1px solid #ff536b;
+    box-shadow: 0 0 45px #ed17352a;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .7s;
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, transparent 49.5%, #3c0610 50%, #810c21 100%);
+    clip-path: polygon(0 0, 100% 0, 50% 62%);
+    border-radius: 5px;
+    transition: .5s;
+    transform-origin: top;
+}
+
+.envelope.opened::before {
+    transform: rotateX(180deg);
+    opacity: .25;
+}
+
+.seal {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--gold);
+    background: #870a21;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--gold);
+    font-size: 27px;
+    pointer-events: none;
+}
+
+.open-btn, .secondary-btn {
+    border: 1px solid var(--gold);
+    color: white;
+    background: linear-gradient(135deg, #f32b4d, #a80b2a);
+    padding: 15px 28px;
+    border-radius: 40px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    transition: .25s;
+    box-shadow: 0 0 25px #f21c422a;
+}
+
+.open-btn {
+    position: relative;
+    z-index: 3;
+    margin-top: 100px;
+}
+
+.open-btn:hover, .secondary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 28px #f21c4266;
+}
+
+/* INVITATION PAGE */
+
+.invitation {
+    display: none;
+    width: min(calc(100% - 30px), 1000px);
+    margin: 30px auto 70px;
+    padding: 42px;
+    border: 1px solid #b67b4e;
+    outline: 1px solid #67212a;
+    outline-offset: -9px;
+    background: linear-gradient(145deg, #1b090e, #100609 70%, #2d080f);
+    box-shadow: 0 0 70px #0009;
+}
+
+.invitation.show {
+    display: block;
+    animation: reveal .8s ease both;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.invitation-top {
+    text-align: center;
+    padding: 10px 0 30px;
+}
+
+.invitation-top .eyebrow {
+    margin-bottom: 8px;
+}
+
+.invitation-top h2 {
+    font-family: 'Great Vibes', cursive;
+    color: #ff4b66;
+    font-size: clamp(45px, 8vw, 76px);
+    font-weight: 400;
+}
+
+.invitation-top p {
+    color: #e9d7d7;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 12px auto 0;
+}
+
+.invitation-grid {
+    display: grid;
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+    gap: 38px;
+    align-items: center;
+}
+
+.photo-frame {
+    position: relative;
+    border: 1px solid var(--gold);
+    padding: 9px;
+    background: #330914;
+    transform: rotate(-2deg);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 380px;
+    display: block;
+    object-fit: cover;
+    background: #310b13;
+}
+
+.photo-caption {
+    font-family: 'Great Vibes', cursive;
+    color: var(--gold);
+    text-align: center;
+    font-size: 29px;
+    padding-top: 12px;
+}
+
+
+.details {
+    text-align: center;
+}
+
+.details h3 {
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.details > p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    color: #f0e3e4;
+    line-height: 1.7;
+}
+
+.heart-divider {
+    margin: 22px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ff3958;
+}
+
+.heart-divider::before,
+.heart-divider::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, transparent, #c83b48);
+}
+
+.heart-divider::after {
+    background: linear-gradient(90deg, #c83b48, transparent);
+}
+
+.event-details {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.event-item {
+    padding: 12px 5px;
+    border-right: 1px solid #7a2934;
+}
+
+.event-item:last-child {
+    border-right: none;
+}
+
+.event-icon {
+    display: block;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.event-item h4 {
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+
+.event-item p {
+    font-size: 12px;
+    line-height: 1.8;
+    color: #f4e5e7;
+    overflow-wrap: anywhere;
+}
+
+.footer {
+    text-align: center;
+    padding: 28px 15px 40px;
+    color: #c4a8ac;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.music-btn {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 5;
+    border: 1px solid var(--gold);
+    background: #290711;
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 19px;
+}
+
+@media (max-width: 700px) {
+    .invitation {
+        padding: 25px 20px;
+    }
+
+    .invitation-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .photo-frame {
+        width: min(100%, 380px);
+        margin: auto;
+    }
+
+    .photo-frame img {
+        height: 340px;
+    }
+
+    .event-details {
+        gap: 4px;
+    }
+
+    .event-item p {
+        font-size: 11px;
+    }
+
+    .envelope {
+        height: 170px;
+    }
+
+    .cover {
+        padding: 25px 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+<main>
+
+    <!-- COVER PAGE -->
+    <section class="cover" id="cover">
+        <div class="cover-content">
+            <p class="eyebrow">You're invited to my</p>
+            <div class="crown">♛</div>
+            <h1 class="big-number">18<span class="ordinal">th</span></h1>
+            <div class="script-title">Birthday</div>
+
+            <p class="cover-description">
+                Eighteen years of dreams, laughter and love...<br>
+                and this is just the beginning!
+            </p>
+
+            <div class="envelope" id="envelope">
+                <div class="seal">♛</div>
+                <button class="open-btn" id="openBtn">
+                    ✉ &nbsp; OPEN INVITATION
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVITATION DETAILS -->
+    <section class="invitation" id="invitation">
+        <header class="invitation-top">
+            <p class="eyebrow">A special day • A beautiful beginning</p>
+            <h2>My 18th Birthday</h2>
+            <p>
+                It would mean so much to me if you could join me
+                in celebrating this special milestone.
+                Let's make it a night to remember!
+            </p>
+        </header>
+
+        <div class="invitation-grid">
+
+            <!-- BIRTHDAY PHOTO -->
+            <div>
+                <div class="photo-frame">
+                    <img
+                        id="birthdayPhoto"
+                        src="c:\Users\CLienT\Documents\Invitation\Images\8f31db97-59a7-4f52-8599-2bec2a36bb7c.jfif"
+                        alt="Birthday celebrant portrait"
+                    >
+                    <div class="photo-caption">See you there! ♡</div>
+                </div>
+            </div>
+
+            <!-- EVENT DETAILS -->
+            <div class="details">
+                <h3>PLEASE JOIN ME</h3>
+
+                <p>
+                    As I step into a new chapter of my life,
+                    I would love to celebrate this unforgettable
+                    moment with the people who make life special.
+                </p>
+
+                <div class="heart-divider">♥</div>
+
+                <div class="event-details">
+                    <div class="event-item">
+                        <span class="event-icon">♧</span>
+                        <h4>DATE</h4>
+                        <p>December 12, 2026<br>Saturday</p>
+                    </div>
+
+                    <div class="event-item">
+                        <span class="event-icon">◷</span>
+                        <h4>TIME</h4>
+                        <p>5:00 PM<br>Until late</p>
+                    </div>
+
+                    <div class="event-item">
+                        <span class="event-icon">♧</span>
+                        <h4>LOCATION</h4>
+                        <p>Grand Celebration Hall<br>Your City</p>
+                    </div>
+                </div>
+
+             
+            </div>
+        </div>
+
+        <div class="heart-divider">✦</div>
+
+        <p style="text-align:center;color:#e8bd71;font-family:'Great Vibes',cursive;font-size:34px">
+            With love, see you there!
+        </p>
+
+        <div style="text-align:center;margin-top:24px">
+            <button class="secondary-btn" id="backBtn">
+                ↩ BACK TO COVER
+            </button>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    MADE WITH LOVE ♥ MY SPECIAL 18TH BIRTHDAY
+</footer>
+
+<!-- Add your own music.mp3 beside index.html to enable music -->
+<audio id="bgMusic" src="music.mp3" loop></audio>
+
+<button
+    class="music-btn"
+    id="musicBtn"
+    aria-label="Toggle background music"
+    title="Play background music"
+>♫</button>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const cover = document.getElementById("cover");
+    const invitation = document.getElementById("invitation");
+    const envelope = document.getElementById("envelope");
+    const openBtn = document.getElementById("openBtn");
+    const backBtn = document.getElementById("backBtn");
+
+    /* OPEN INVITATION */
+    openBtn.addEventListener("click", function () {
+        envelope.classList.add("opened");
+        openBtn.disabled = true;
+
+        setTimeout(function () {
+            cover.style.display = "none";
+            invitation.classList.add("show");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            openBtn.disabled = false;
+        }, 350);
+    });
+
+    /* BACK TO COVER */
+    backBtn.addEventListener("click", function () {
+        invitation.classList.remove("show");
+        cover.style.display = "flex";
+        envelope.classList.remove("opened");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    /* CHANGE BIRTHDAY PHOTO */
+    const photoInput = document.getElementById("photoInput");
+    const birthdayPhoto = document.getElementById("birthdayPhoto");
+    let photoURL = null;
+
+    photoInput.addEventListener("change", function () {
+        const file = this.files && this.files[0];
+
+        if (!file) return;
+
+        if (!file.type.startsWith("image/")) {
+            alert("Please select a valid image file.");
+            this.value = "";
+            return;
+        }
+
+        if (photoURL) {
+            URL.revokeObjectURL(photoURL);
+        }
+
+        photoURL = URL.createObjectURL(file);
+        birthdayPhoto.src = photoURL;
+    });
+
+    /* BACKGROUND MUSIC */
+    const bgMusic = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicBtn");
+
+    musicBtn.addEventListener("click", async function () {
+        if (bgMusic.paused) {
+            try {
+                await bgMusic.play();
+                musicBtn.textContent = "♫";
+                musicBtn.title = "Pause background music";
+            } catch (error) {
+                alert("Please put a music.mp3 file in the same folder as index.html.");
+            }
+        } else {
+            bgMusic.pause();
+            musicBtn.textContent = "♪";
+            musicBtn.title = "Play background music";
+        }
+    });
+});
+</script>
+
+</body>
+</html>
